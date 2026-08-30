@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Projeto | Thiago Shimabukuro Cortez</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="th (4).png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --primary:#CCFF00; --primary-hover:#b8e600; --dark:#000; --gray-200:#e5e7eb;
+    --gray-400:#9ca3af; --gray-500:#6b7280; --gray-700:#374151;
+    --font-display:'Archivo Black',sans-serif; --font-body:'Inter',sans-serif;
+    --shadow-brutal:8px 8px 0px 0px #000; --radius:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--font-body);color:var(--dark);background:#fdfdfd;line-height:1.5;}
+  .container{max-width:800px;margin:0 auto;padding:0 1.25rem;}
+  a{color:inherit;}
+
+  /* HEADER */
+  .top{background:#000;color:#fff;padding:2.5rem 0 3rem;}
+  .top .eyebrow{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:var(--primary);margin-bottom:1rem;}
+  .top h1{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.8rem,5vw,2.75rem);line-height:1.05;}
+  .top p{color:#bbb;margin-top:1rem;font-size:.9rem;max-width:34rem;}
+  .lock-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--primary);color:#000;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:.4rem .8rem;border-radius:999px;margin-top:1.5rem;}
+
+  /* FORM SECTIONS */
+  .section{padding:2.5rem 0;border-bottom:1px solid var(--gray-200);}
+  .section:last-of-type{border-bottom:none;}
+  .section__num{font-family:var(--font-display);font-size:.7rem;color:var(--gray-400);letter-spacing:2px;margin-bottom:.5rem;}
+  .section__title{font-family:var(--font-display);text-transform:uppercase;font-size:1.35rem;margin-bottom:.4rem;}
+  .section__sub{font-size:.8rem;color:var(--gray-500);margin-bottom:1.5rem;}
+
+  .field{margin-bottom:1.3rem;}
+  .field label{display:block;font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem;}
+  .field .hint{font-weight:400;text-transform:none;color:var(--gray-400);letter-spacing:0;font-size:.72rem;}
+  .field input[type=text],
+  .field input[type=email],
+  .field input[type=tel],
+  .field select,
+  .field textarea{
+    width:100%;border:2px solid #000;border-radius:14px;padding:.85rem 1rem;
+    font-family:inherit;font-size:.9rem;background:#fff;transition:.15s;
+  }
+  .field textarea{resize:vertical;min-height:90px;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;box-shadow:4px 4px 0 0 #000;transform:translate(-2px,-2px);}
+  .row2{display:grid;grid-template-columns:1fr;gap:1rem;}
+  @media(min-width:640px){.row2{grid-template-columns:1fr 1fr;}}
+
+  .chip-group{display:flex;flex-wrap:wrap;gap:.6rem;}
+  .chip{position:relative;}
+  .chip input{position:absolute;opacity:0;width:0;height:0;}
+  .chip span{
+    display:inline-block;border:2px solid #000;border-radius:999px;padding:.55rem 1.1rem;
+    font-size:.78rem;font-weight:700;cursor:pointer;transition:.15s;background:#fff;
+  }
+  .chip input:checked + span{background:var(--primary);box-shadow:3px 3px 0 0 #000;transform:translate(-1px,-1px);}
+
+  /* BUTTON */
+  .actions{padding:3rem 0 5rem;text-align:center;}
+  .btn-pdf{
+    background:var(--primary);border:2px solid #000;border-radius:999px;
+    font-family:inherit;font-weight:900;text-transform:uppercase;font-size:.85rem;
+    padding:1.1rem 2.8rem;box-shadow:var(--shadow-brutal);cursor:pointer;transition:.15s;
+  }
+  .btn-pdf:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 0 #000;background:var(--primary-hover);}
+  .btn-pdf:active{transform:translate(0,0);box-shadow:4px 4px 0 0 #000;}
+  .actions p{margin-top:1.2rem;font-size:.75rem;color:var(--gray-500);}
+  #status{margin-top:1rem;font-weight:700;font-size:.8rem;display:none;}
+  #status.ok{color:#2b8a00;display:block;}
+
+  .footer{padding:2rem 0;text-align:center;font-size:.7rem;color:var(--gray-400);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <p class="eyebrow">Briefing . Novo Projeto</p>
+    <h1>Vamos alinhar<br>seu projeto.</h1>
+    <p>Responda com calma. Quanto mais detalhes você me der aqui, mais certeira e rápida fica a proposta. Ao final, você gera um PDF com tudo preenchido e me envia por WhatsApp ou e-mail.</p>
+  </div>
+</header>
+
+<form id="briefing-form">
+
+  <!-- 1. CONTATO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">01</p>
+      <h2 class="section__title">Quem é você</h2>
+      <p class="section__sub">Dados básicos para eu te identificar e te responder.</p>
+
+      <div class="row2">
+        <div class="field">
+          <label>Nome completo</label>
+          <input type="text" id="nome" required>
+        </div>
+        <div class="field">
+          <label>Empresa / Marca</label>
+          <input type="text" id="empresa">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="tel" id="whatsapp" placeholder="(13) 99999-9999" required>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. NEGÓCIO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">02</p>
+      <h2 class="section__title">Sobre o seu negócio</h2>
+      <p class="section__sub">Contexto rápido pra eu entender onde o projeto se encaixa.</p>
+
+      <div class="field">
+        <label>O que a sua empresa faz? <span class="hint">(produto, serviço, segmento)</span></label>
+        <textarea id="negocio-o-que"></textarea>
+      </div>
+      <div class="field">
+        <label>Qual o seu diferencial em relação aos concorrentes?</label>
+        <textarea id="negocio-diferencial"></textarea>
+      </div>
+      <div class="field">
+        <label>Quem são seus principais concorrentes? <span class="hint">(nomes ou sites, se souber)</span></label>
+        <textarea id="negocio-concorrentes"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROJETO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">03</p>
+      <h2 class="section__title">O projeto</h2>
+      <p class="section__sub">Selecione o que você precisa. Pode marcar mais de uma opção.</p>
+
+      <div class="field">
+        <label>Tipo de projeto</label>
+        <div class="chip-group" id="tipo-projeto">
+          <label class="chip"><input type="checkbox" value="Identidade Visual"><span>Identidade Visual</span></label>
+          <label class="chip"><input type="checkbox" value="Site Institucional"><span>Site Institucional</span></label>
+          <label class="chip"><input type="checkbox" value="Landing Page"><span>Landing Page</span></label>
+          <label class="chip"><input type="checkbox" value="Loja Virtual"><span>Loja Virtual</span></label>
+          <label class="chip"><input type="checkbox" value="Sistema Web / App"><span>Sistema Web / App</span></label>
+          <label class="chip"><input type="checkbox" value="Material Impresso"><span>Material Impresso</span></label>
+          <label class="chip"><input type="checkbox" value="Social Media"><span>Social Media</span></label>
+          <label class="chip"><input type="checkbox" value="Outro"><span>Outro</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Qual o objetivo principal deste projeto? <span class="hint">(gerar vendas, captar contatos, fortalecer marca...)</span></label>
+        <textarea id="objetivo"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Quem é o público-alvo? <span class="hint">(idade, perfil, onde estão)</span></label>
+        <textarea id="publico"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. REFERÊNCIAS E ESTILO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">04</p>
+      <h2 class="section__title">Referências e estilo</h2>
+      <p class="section__sub">Isso me ajuda a acertar a direção visual logo na primeira proposta.</p>
+
+      <div class="field">
+        <label>Como você gostaria que a marca/site fosse percebido?</label>
+        <div class="chip-group" id="estilo-visual">
+          <label class="chip"><input type="checkbox" value="Moderno e minimalista"><span>Moderno e minimalista</span></label>
+          <label class="chip"><input type="checkbox" value="Sério e corporativo"><span>Sério e corporativo</span></label>
+          <label class="chip"><input type="checkbox" value="Colorido e vibrante"><span>Colorido e vibrante</span></label>
+          <label class="chip"><input type="checkbox" value="Divertido e descontraído"><span>Divertido e descontraído</span></label>
+          <label class="chip"><input type="checkbox" value="Elegante e premium"><span>Elegante e premium</span></label>
+          <label class="chip"><input type="checkbox" value="Ousado e disruptivo"><span>Ousado e disruptivo</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sites, marcas ou perfis que você admira <span class="hint">(cole links, um por linha)</span></label>
+        <textarea id="referencias-gosta"></textarea>
+      </div>
+      <div class="field">
+        <label>Existe algo que você não gosta e quer evitar?</label>
+        <textarea id="referencias-evitar"></textarea>
+      </div>
+      <div class="field">
+        <label>Cores da marca ou preferências de cor <span class="hint">(se já tiver definido)</span></label>
+        <input type="text" id="cores">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONTEÚDO E ESCOPO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">05</p>
+      <h2 class="section__title">Conteúdo e funcionalidades</h2>
+      <p class="section__sub">Só marque o que já está pronto ou é necessário.</p>
+
+      <div class="field">
+        <label>Você já possui...</label>
+        <div class="chip-group" id="material-pronto">
+          <label class="chip"><input type="checkbox" value="Logo pronta"><span>Logo pronta</span></label>
+          <label class="chip"><input type="checkbox" value="Textos prontos"><span>Textos prontos</span></label>
+          <label class="chip"><input type="checkbox" value="Fotos/vídeos próprios"><span>Fotos/vídeos próprios</span></label>
+          <label class="chip"><input type="checkbox" value="Domínio registrado"><span>Domínio registrado</span></label>
+          <label class="chip"><input type="checkbox" value="Nenhum dos anteriores"><span>Nenhum dos anteriores</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Funcionalidades necessárias <span class="hint">(se aplicável ao projeto)</span></label>
+        <div class="chip-group" id="funcionalidades">
+          <label class="chip"><input type="checkbox" value="Formulário de contato"><span>Formulário de contato</span></label>
+          <label class="chip"><input type="checkbox" value="Blog / Artigos"><span>Blog / Artigos</span></label>
+          <label class="chip"><input type="checkbox" value="Área de login"><span>Área de login</span></label>
+          <label class="chip"><input type="checkbox" value="Pagamento online"><span>Pagamento online</span></label>
+          <label class="chip"><input type="checkbox" value="Integração com WhatsApp"><span>Integração com WhatsApp</span></label>
+          <label class="chip"><input type="checkbox" value="Multi-idiomas"><span>Multi-idiomas</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PRAZO E ORÇAMENTO -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">06</p>
+      <h2 class="section__title">Prazos</h2>
+      <p class="section__sub">Sem essa informação eu posso te propor algo fora da sua realidade — e ninguém quer isso.</p>
+
+      <div class="row2">
+        <div class="field">
+          <label>Prazo desejado para entrega</label>
+          <select id="prazo">
+            <option value="">Selecione...</option>
+            <option>Urgente (até 2 semanas)</option>
+            <option>Até 1 mês</option>
+            <option>1 a 3 meses</option>
+            <option>Sem pressa / flexível</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. OBSERVAÇÕES -->
+  <section class="section">
+    <div class="container">
+      <p class="section__num">07</p>
+      <h2 class="section__title">Últimos detalhes</h2>
+      <p class="section__sub">Fica à vontade pra escrever qualquer coisa que não coube nas perguntas acima.</p>
+
+      <div class="field">
+        <label>Observações finais</label>
+        <textarea id="observacoes" rows="4"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <div class="actions container">
+    <button type="submit" class="btn-pdf">Gerar PDF do Briefing</button>
+    <p>O PDF é gerado direto no seu navegador — nada é enviado a nenhum servidor.<br>Depois de baixar, é só me mandar pelo WhatsApp ou e-mail.</p>
+    <p id="status" class="ok">✓ PDF gerado e baixado com sucesso!</p>
+  </div>
+</form>
+
+<footer class="footer">
+  <p>Thiago Shimabukuro Cortez · Página de uso interno, não indexada nos buscadores.</p>
+</footer>
+
+<script>
+document.getElementById('briefing-form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const val = id => (document.getElementById(id)?.value || '').trim();
+  const checked = groupId => Array.from(document.querySelectorAll('#'+groupId+' input:checked')).map(i => i.value);
+
+  if(!val('nome') || !val('email') || !val('whatsapp')){
+    alert('Por favor, preencha ao menos nome, e-mail e WhatsApp antes de gerar o PDF.');
+    return;
+  }
+
+  const data = {
+    nome: val('nome'), empresa: val('empresa'), email: val('email'), whatsapp: val('whatsapp'),
+    negocioOque: val('negocio-o-que'), negocioDiferencial: val('negocio-diferencial'), negocioConcorrentes: val('negocio-concorrentes'),
+    tipoProjeto: checked('tipo-projeto'), objetivo: val('objetivo'), publico: val('publico'),
+    estiloVisual: checked('estilo-visual'), refGosta: val('referencias-gosta'), refEvitar: val('referencias-evitar'), cores: val('cores'),
+    materialPronto: checked('material-pronto'), funcionalidades: checked('funcionalidades'),
+    prazo: val('prazo'), orcamento: val('orcamento'), observacoes: val('observacoes')
+  };
+
+  gerarPDF(data);
+});
+
+function gerarPDF(d){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const marginX = 48;
+  let y = 0;
+
+  const primary = [204, 255, 0];
+  const black = [0,0,0];
+  const gray = [107,114,128];
+
+  function checkPageBreak(space){
+    if(y + space > pageH - 50){
+      doc.addPage();
+      y = 50;
+    }
+  }
+
+  function drawHeader(){
+    doc.setFillColor(...black);
+    doc.rect(0, 0, pageW, 110, 'F');
+    doc.setFillColor(...primary);
+    doc.rect(0, 106, pageW, 4, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(9);
+    doc.text('THIAGO SHIMABUKURO CORTEZ', marginX, 34);
+    doc.setFontSize(22);
+    doc.text('BRIEFING DE PROJETO', marginX, 66);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(9);
+    doc.setTextColor(200,200,200);
+    const dataHoje = new Date().toLocaleDateString('pt-BR');
+    doc.text('Gerado em ' + dataHoje, marginX, 88);
+    y = 140;
+  }
+
+  function sectionTitle(num, title){
+    checkPageBreak(40);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(8);
+    doc.setTextColor(...gray);
+    doc.text(num, marginX, y);
+    doc.setFontSize(13);
+    doc.setTextColor(...black);
+    doc.text(title.toUpperCase(), marginX + 24, y);
+    y += 8;
+    doc.setDrawColor(...primary);
+    doc.setLineWidth(2);
+    doc.line(marginX, y, pageW - marginX, y);
+    y += 20;
+  }
+
+  function field(label, value){
+    if(!value || (Array.isArray(value) && value.length === 0)) value = '—';
+    if(Array.isArray(value)) value = value.join(', ');
+
+    checkPageBreak(30);
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...black);
+    doc.text(label.toUpperCase(), marginX, y);
+    y += 14;
+
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(10.5);
+    doc.setTextColor(60,60,60);
+    const lines = doc.splitTextToSize(String(value), pageW - marginX*2);
+    lines.forEach(line => {
+      checkPageBreak(16);
+      doc.text(line, marginX, y);
+      y += 15;
+    });
+    y += 10;
+  }
+
+  drawHeader();
+
+  sectionTitle('01', 'Contato');
+  field('Nome completo', d.nome);
+  field('Empresa / Marca', d.empresa);
+  field('E-mail', d.email);
+  field('WhatsApp', d.whatsapp);
+
+  sectionTitle('02', 'Sobre o negócio');
+  field('O que a empresa faz', d.negocioOque);
+  field('Diferencial competitivo', d.negocioDiferencial);
+  field('Concorrentes', d.negocioConcorrentes);
+
+  sectionTitle('03', 'O projeto');
+  field('Tipo de projeto', d.tipoProjeto);
+  field('Objetivo principal', d.objetivo);
+  field('Público-alvo', d.publico);
+
+  sectionTitle('04', 'Referências e estilo');
+  field('Estilo visual desejado', d.estiloVisual);
+  field('Referências que gosta', d.refGosta);
+  field('O que evitar', d.refEvitar);
+  field('Cores preferidas', d.cores);
+
+  sectionTitle('05', 'Conteúdo e funcionalidades');
+  field('Materiais já disponíveis', d.materialPronto);
+  field('Funcionalidades necessárias', d.funcionalidades);
+
+  sectionTitle('06', 'Prazo e orçamento');
+  field('Prazo desejado', d.prazo);
+  field('Orçamento disponível', d.orcamento);
+
+  sectionTitle('07', 'Observações finais');
+  field('Observações', d.observacoes);
+
+  // Rodapé em todas as páginas
+  const totalPages = doc.internal.getNumberOfPages();
+  for(let i=1; i<=totalPages; i++){
+    doc.setPage(i);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(8);
+    doc.setTextColor(...gray);
+    doc.text('Briefing de Projeto · thiagoshimabukurocortez.vercel.app', marginX, pageH - 24);
+    doc.text(String(i) + ' / ' + totalPages, pageW - marginX - 20, pageH - 24);
+  }
+
+  const nomeArquivo = 'briefing-' + (d.empresa || d.nome || 'projeto').toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.pdf';
+  doc.save(nomeArquivo);
+
+  const status = document.getElementById('status');
+  status.style.display = 'block';
+  status.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+</script>
+
+</body>
+</html>
