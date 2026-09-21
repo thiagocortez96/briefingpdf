@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briefing de Projeto | Thiago Shimabukuro Cortez</title>
+<title>Briefing de Identidade Visual | Thiago Shimabukuro Cortez</title>
 <meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="th (4).png">
@@ -25,7 +25,6 @@
   .top .eyebrow{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:var(--primary);margin-bottom:1rem;}
   .top h1{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.8rem,5vw,2.75rem);line-height:1.05;}
   .top p{color:#bbb;margin-top:1rem;font-size:.9rem;max-width:34rem;}
-  .lock-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--primary);color:#000;font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:.4rem .8rem;border-radius:999px;margin-top:1.5rem;}
 
   /* FORM SECTIONS */
   .section{padding:2.5rem 0;border-bottom:1px solid var(--gray-200);}
@@ -79,9 +78,9 @@
 
 <header class="top">
   <div class="container">
-    <p class="eyebrow">Briefing . Novo Projeto</p>
-    <h1>Vamos alinhar<br>seu projeto.</h1>
-    <p>Responda com calma. Quanto mais detalhes você me der aqui, mais certeira e rápida fica a proposta. Ao final, você gera um PDF com tudo preenchido e me envia por WhatsApp ou e-mail.</p>
+    <p class="eyebrow">Briefing . Identidade Visual</p>
+    <h1>Vamos criar sua<br>identidade visual.</h1>
+    <p>Responda com calma. Quanto mais detalhes você me der aqui, mais certeira e rápida fica a proposta visual. Ao final, você gera um PDF com tudo preenchido para nos enviarmos por WhatsApp ou e-mail.</p>
   </div>
 </header>
 
@@ -122,128 +121,153 @@
     <div class="container">
       <p class="section__num">02</p>
       <h2 class="section__title">Sobre o seu negócio</h2>
-      <p class="section__sub">Contexto rápido pra eu entender onde o projeto se encaixa.</p>
+      <p class="section__sub">Contexto sobre a empresa para alinhar o posicionamento do projeto.</p>
 
       <div class="field">
         <label>O que a sua empresa faz? <span class="hint">(produto, serviço, segmento)</span></label>
         <textarea id="negocio-o-que"></textarea>
       </div>
       <div class="field">
+        <label>História / Propósito da Marca <span class="hint">(o motivo de existir além do lucro)</span></label>
+        <textarea id="negocio-proposito"></textarea>
+      </div>
+      <div class="field">
         <label>Qual o seu diferencial em relação aos concorrentes?</label>
         <textarea id="negocio-diferencial"></textarea>
       </div>
       <div class="field">
-        <label>Quem são seus principais concorrentes? <span class="hint">(nomes ou sites, se souber)</span></label>
+        <label>Quem são seus principais concorrentes? <span class="hint">(nomes, redes sociais ou sites)</span></label>
         <textarea id="negocio-concorrentes"></textarea>
       </div>
     </div>
   </section>
 
-  <!-- 3. PROJETO -->
+  <!-- 3. PÚBLICO E OBJETIVO -->
   <section class="section">
     <div class="container">
       <p class="section__num">03</p>
-      <h2 class="section__title">O projeto</h2>
-      <p class="section__sub">Selecione o que você precisa. Pode marcar mais de uma opção.</p>
+      <h2 class="section__title">Público-alvo e objetivo</h2>
+      <p class="section__sub">Para quem a marca deve falar e onde ela quer chegar.</p>
 
       <div class="field">
-        <label>Tipo de projeto</label>
-        <div class="chip-group" id="tipo-projeto">
-          <label class="chip"><input type="checkbox" value="Identidade Visual"><span>Identidade Visual</span></label>
-          <label class="chip"><input type="checkbox" value="Site Institucional"><span>Site Institucional</span></label>
-          <label class="chip"><input type="checkbox" value="Landing Page"><span>Landing Page</span></label>
-          <label class="chip"><input type="checkbox" value="Loja Virtual"><span>Loja Virtual</span></label>
-          <label class="chip"><input type="checkbox" value="Sistema Web / App"><span>Sistema Web / App</span></label>
-          <label class="chip"><input type="checkbox" value="Material Impresso"><span>Material Impresso</span></label>
-          <label class="chip"><input type="checkbox" value="Social Media"><span>Social Media</span></label>
-          <label class="chip"><input type="checkbox" value="Outro"><span>Outro</span></label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Qual o objetivo principal deste projeto? <span class="hint">(gerar vendas, captar contatos, fortalecer marca...)</span></label>
-        <textarea id="objetivo"></textarea>
-      </div>
-
-      <div class="field">
-        <label>Quem é o público-alvo? <span class="hint">(idade, perfil, onde estão)</span></label>
+        <label>Quem é o público-alvo? <span class="hint">(gênero, faixa etária, perfil comportamental)</span></label>
         <textarea id="publico"></textarea>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Posicionamento de preço</label>
+          <select id="posicionamento-preco">
+            <option value="">Selecione...</option>
+            <option>Popular</option>
+            <option>Médio</option>
+            <option>Premium / Luxo</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Objetivo do Projeto</label>
+          <select id="objetivo-projeto">
+            <option value="">Selecione...</option>
+            <option>Criar uma marca do zero</option>
+            <option>Rebranding / Modernizar marca antiga</option>
+            <option>Profissionalizar a imagem para atrair clientes de maior valor</option>
+            <option>Outro</option>
+          </select>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. REFERÊNCIAS E ESTILO -->
+  <!-- 4. DIREÇÃO VISUAL E ESTILO -->
   <section class="section">
     <div class="container">
       <p class="section__num">04</p>
-      <h2 class="section__title">Referências e estilo</h2>
-      <p class="section__sub">Isso me ajuda a acertar a direção visual logo na primeira proposta.</p>
+      <h2 class="section__title">Direção visual e estilo</h2>
+      <p class="section__sub">Isso me ajuda a acertar o tom visual logo na primeira proposta.</p>
 
       <div class="field">
-        <label>Como você gostaria que a marca/site fosse percebido?</label>
-        <div class="chip-group" id="estilo-visual">
+        <label>Personalidade da marca <span class="hint">(selecione as que mais combinam)</span></label>
+        <div class="chip-group" id="personalidade-marca">
           <label class="chip"><input type="checkbox" value="Moderno e minimalista"><span>Moderno e minimalista</span></label>
           <label class="chip"><input type="checkbox" value="Sério e corporativo"><span>Sério e corporativo</span></label>
-          <label class="chip"><input type="checkbox" value="Colorido e vibrante"><span>Colorido e vibrante</span></label>
-          <label class="chip"><input type="checkbox" value="Divertido e descontraído"><span>Divertido e descontraído</span></label>
           <label class="chip"><input type="checkbox" value="Elegante e premium"><span>Elegante e premium</span></label>
+          <label class="chip"><input type="checkbox" value="Divertido e descontraído"><span>Divertido e descontraído</span></label>
+          <label class="chip"><input type="checkbox" value="Colorido e vibrante"><span>Colorido e vibrante</span></label>
           <label class="chip"><input type="checkbox" value="Ousado e disruptivo"><span>Ousado e disruptivo</span></label>
+          <label class="chip"><input type="checkbox" value="Orgânico e artesanal"><span>Orgânico e artesanal</span></label>
         </div>
       </div>
 
       <div class="field">
-        <label>Sites, marcas ou perfis que você admira <span class="hint">(cole links, um por linha)</span></label>
+        <label>Preferência de tipo de logotipo</label>
+        <div class="chip-group" id="tipo-logotipo">
+          <label class="chip"><input type="checkbox" value="Apenas texto (Wordmark)"><span>Apenas texto (Wordmark)</span></label>
+          <label class="chip"><input type="checkbox" value="Símbolo + Texto"><span>Símbolo + Texto</span></label>
+          <label class="chip"><input type="checkbox" value="Monograma / Iniciais"><span>Monograma / Iniciais</span></label>
+          <label class="chip"><input type="checkbox" value="Mascote / Ilustração"><span>Mascote / Ilustração</span></label>
+          <label class="chip"><input type="checkbox" value="Aberto a sugestões"><span>Aberto a sugestões</span></label>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Cores que DEVEM ser usadas</label>
+          <input type="text" id="cores-sim" placeholder="Ex: Azul escuro e dourado">
+        </div>
+        <div class="field">
+          <label>Cores que NÃO DEVEM ser usadas</label>
+          <input type="text" id="cores-nao" placeholder="Ex: Amarelo, rosa">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Marcas ou referências visuais que você gosta <span class="hint">(cole links ou nomes)</span></label>
         <textarea id="referencias-gosta"></textarea>
       </div>
       <div class="field">
-        <label>Existe algo que você não gosta e quer evitar?</label>
+        <label>O que evitar de jeito nenhum? <span class="hint">(símbolos clichês, estilos, fontes, etc.)</span></label>
         <textarea id="referencias-evitar"></textarea>
-      </div>
-      <div class="field">
-        <label>Cores da marca ou preferências de cor <span class="hint">(se já tiver definido)</span></label>
-        <input type="text" id="cores">
       </div>
     </div>
   </section>
 
-  <!-- 5. CONTEÚDO E ESCOPO -->
+  <!-- 5. APLICAÇÕES E ENTREGÁVEIS -->
   <section class="section">
     <div class="container">
       <p class="section__num">05</p>
-      <h2 class="section__title">Conteúdo e funcionalidades</h2>
-      <p class="section__sub">Só marque o que já está pronto ou é necessário.</p>
+      <h2 class="section__title">Aplicações e entregáveis</h2>
+      <p class="section__sub">Onde a sua nova identidade visual será aplicada no dia a dia.</p>
 
       <div class="field">
-        <label>Você já possui...</label>
-        <div class="chip-group" id="material-pronto">
-          <label class="chip"><input type="checkbox" value="Logo pronta"><span>Logo pronta</span></label>
-          <label class="chip"><input type="checkbox" value="Textos prontos"><span>Textos prontos</span></label>
-          <label class="chip"><input type="checkbox" value="Fotos/vídeos próprios"><span>Fotos/vídeos próprios</span></label>
-          <label class="chip"><input type="checkbox" value="Domínio registrado"><span>Domínio registrado</span></label>
-          <label class="chip"><input type="checkbox" value="Nenhum dos anteriores"><span>Nenhum dos anteriores</span></label>
+        <label>Aplicações Digitais</label>
+        <div class="chip-group" id="aplicacoes-digitais">
+          <label class="chip"><input type="checkbox" value="Redes Sociais (Avatar, capa, templates)"><span>Redes Sociais (Avatar, capa, templates)</span></label>
+          <label class="chip"><input type="checkbox" value="Assinatura de e-mail"><span>Assinatura de e-mail</span></label>
+          <label class="chip"><input type="checkbox" value="Marca d'água / Pattern"><span>Marca d'água / Pattern</span></label>
+          <label class="chip"><input type="checkbox" value="Vinheta / Animação do logo"><span>Vinheta / Animação do logo</span></label>
         </div>
       </div>
 
       <div class="field">
-        <label>Funcionalidades necessárias <span class="hint">(se aplicável ao projeto)</span></label>
-        <div class="chip-group" id="funcionalidades">
-          <label class="chip"><input type="checkbox" value="Formulário de contato"><span>Formulário de contato</span></label>
-          <label class="chip"><input type="checkbox" value="Blog / Artigos"><span>Blog / Artigos</span></label>
-          <label class="chip"><input type="checkbox" value="Área de login"><span>Área de login</span></label>
-          <label class="chip"><input type="checkbox" value="Pagamento online"><span>Pagamento online</span></label>
-          <label class="chip"><input type="checkbox" value="Integração com WhatsApp"><span>Integração com WhatsApp</span></label>
-          <label class="chip"><input type="checkbox" value="Multi-idiomas"><span>Multi-idiomas</span></label>
+        <label>Aplicações Impressas / Materiais Físicos</label>
+        <div class="chip-group" id="aplicacoes-impressas">
+          <label class="chip"><input type="checkbox" value="Cartão de visitas"><span>Cartão de visitas</span></label>
+          <label class="chip"><input type="checkbox" value="Papelaria / Timbrado"><span>Papelaria / Timbrado</span></label>
+          <label class="chip"><input type="checkbox" value="Uniformes / Camisetas"><span>Uniformes / Camisetas</span></label>
+          <label class="chip"><input type="checkbox" value="Embalagens / Sacolas / Adesivos"><span>Embalagens / Sacolas / Adesivos</span></label>
+          <label class="chip"><input type="checkbox" value="Cartão de agradecimento / Brindes"><span>Cartão de agradecimento / Brindes</span></label>
+          <label class="chip"><input type="checkbox" value="Fachada / Placa / Sinalização"><span>Fachada / Placa / Sinalização</span></label>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. PRAZO E ORÇAMENTO -->
+  <!-- 6. PRAZOS -->
   <section class="section">
     <div class="container">
       <p class="section__num">06</p>
       <h2 class="section__title">Prazos</h2>
-      <p class="section__sub">Sem essa informação eu posso te propor algo fora da sua realidade — e ninguém quer isso.</p>
+      <p class="section__sub">Planejamento do cronograma de entregas.</p>
 
       <div class="row2">
         <div class="field">
@@ -252,7 +276,7 @@
             <option value="">Selecione...</option>
             <option>Urgente (até 2 semanas)</option>
             <option>Até 1 mês</option>
-            <option>1 a 3 meses</option>
+            <option>1 a 2 meses</option>
             <option>Sem pressa / flexível</option>
           </select>
         </div>
@@ -265,7 +289,7 @@
     <div class="container">
       <p class="section__num">07</p>
       <h2 class="section__title">Últimos detalhes</h2>
-      <p class="section__sub">Fica à vontade pra escrever qualquer coisa que não coube nas perguntas acima.</p>
+      <p class="section__sub">Escreva qualquer detalhe importante que não foi coberto acima.</p>
 
       <div class="field">
         <label>Observações finais</label>
@@ -299,11 +323,11 @@ document.getElementById('briefing-form').addEventListener('submit', function(e){
 
   const data = {
     nome: val('nome'), empresa: val('empresa'), email: val('email'), whatsapp: val('whatsapp'),
-    negocioOque: val('negocio-o-que'), negocioDiferencial: val('negocio-diferencial'), negocioConcorrentes: val('negocio-concorrentes'),
-    tipoProjeto: checked('tipo-projeto'), objetivo: val('objetivo'), publico: val('publico'),
-    estiloVisual: checked('estilo-visual'), refGosta: val('referencias-gosta'), refEvitar: val('referencias-evitar'), cores: val('cores'),
-    materialPronto: checked('material-pronto'), funcionalidades: checked('funcionalidades'),
-    prazo: val('prazo'), orcamento: val('orcamento'), observacoes: val('observacoes')
+    negocioOque: val('negocio-o-que'), negocioProposito: val('negocio-proposito'), negocioDiferencial: val('negocio-diferencial'), negocioConcorrentes: val('negocio-concorrentes'),
+    publico: val('publico'), posicionamentoPreco: val('posicionamento-preco'), objetivoProjeto: val('objetivo-projeto'),
+    personalidadeMarca: checked('personalidade-marca'), tipoLogotipo: checked('tipo-logotipo'), coresSim: val('cores-sim'), coresNao: val('cores-nao'), refGosta: val('referencias-gosta'), refEvitar: val('referencias-evitar'),
+    aplicacoesDigitais: checked('aplicacoes-digitais'), aplicacoesImpressas: checked('aplicacoes-impressas'),
+    prazo: val('prazo'), observacoes: val('observacoes')
   };
 
   gerarPDF(data);
@@ -337,8 +361,8 @@ function gerarPDF(d){
     doc.setFont('helvetica','bold');
     doc.setFontSize(9);
     doc.text('THIAGO SHIMABUKURO CORTEZ', marginX, 34);
-    doc.setFontSize(22);
-    doc.text('BRIEFING DE PROJETO', marginX, 66);
+    doc.setFontSize(20);
+    doc.text('BRIEFING DE IDENTIDADE VISUAL', marginX, 66);
     doc.setFont('helvetica','normal');
     doc.setFontSize(9);
     doc.setTextColor(200,200,200);
@@ -396,27 +420,29 @@ function gerarPDF(d){
 
   sectionTitle('02', 'Sobre o negócio');
   field('O que a empresa faz', d.negocioOque);
+  field('História / Propósito da Marca', d.negocioProposito);
   field('Diferencial competitivo', d.negocioDiferencial);
   field('Concorrentes', d.negocioConcorrentes);
 
-  sectionTitle('03', 'O projeto');
-  field('Tipo de projeto', d.tipoProjeto);
-  field('Objetivo principal', d.objetivo);
+  sectionTitle('03', 'Público-alvo e Objetivo');
   field('Público-alvo', d.publico);
+  field('Posicionamento de preço', d.posicionamentoPreco);
+  field('Objetivo do projeto', d.objetivoProjeto);
 
-  sectionTitle('04', 'Referências e estilo');
-  field('Estilo visual desejado', d.estiloVisual);
+  sectionTitle('04', 'Direção visual e estilo');
+  field('Personalidade da marca', d.personalidadeMarca);
+  field('Preferência de tipo de logotipo', d.tipoLogotipo);
+  field('Cores a utilizar', d.coresSim);
+  field('Cores a evitar', d.coresNao);
   field('Referências que gosta', d.refGosta);
   field('O que evitar', d.refEvitar);
-  field('Cores preferidas', d.cores);
 
-  sectionTitle('05', 'Conteúdo e funcionalidades');
-  field('Materiais já disponíveis', d.materialPronto);
-  field('Funcionalidades necessárias', d.funcionalidades);
+  sectionTitle('05', 'Aplicações e entregáveis');
+  field('Aplicações Digitais', d.aplicacoesDigitais);
+  field('Aplicações Impressas / Físicas', d.aplicacoesImpressas);
 
-  sectionTitle('06', 'Prazo e orçamento');
+  sectionTitle('06', 'Prazos');
   field('Prazo desejado', d.prazo);
-  field('Orçamento disponível', d.orcamento);
 
   sectionTitle('07', 'Observações finais');
   field('Observações', d.observacoes);
@@ -428,11 +454,11 @@ function gerarPDF(d){
     doc.setFont('helvetica','normal');
     doc.setFontSize(8);
     doc.setTextColor(...gray);
-    doc.text('Briefing de Projeto · thiagoshimabukurocortez.vercel.app', marginX, pageH - 24);
+    doc.text('Briefing de Identidade Visual · thiagoshimabukurocortez.vercel.app', marginX, pageH - 24);
     doc.text(String(i) + ' / ' + totalPages, pageW - marginX - 20, pageH - 24);
   }
 
-  const nomeArquivo = 'briefing-' + (d.empresa || d.nome || 'projeto').toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.pdf';
+  const nomeArquivo = 'briefing-identidade-visual-' + (d.empresa || d.nome || 'projeto').toLowerCase().replace(/[^a-z0-9]+/g,'-') + '.pdf';
   doc.save(nomeArquivo);
 
   const status = document.getElementById('status');
